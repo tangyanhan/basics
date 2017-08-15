@@ -54,6 +54,16 @@ Height of a heap with n nodes: Θ(lg n)
 * The HEAPSORT procedure, which runs in O(n lg n) time, sorts an array in place.
 * The MAX-HEAP-INSERT, HEAP-EXTRACT-MAX, HEAP-INCREASE-KEY, and HEAP-MAXIMUM procedures, which run in O(lg n) time, allow the heap data structure to implement a priority queue.
 
-## MAX-HEAPIFY
+## Summary
 
+Heapsort is done with three procedures:
 
+1. **Max-Heapify**
+   Max-Heapify can ensure that the smallest binary tree unit can be adjusted and the largest element becomes the root
+
+2. **Build-Max-Heap**
+   Do max-heapify in bottom-up direction, so when one build-max-heap is done, the largest element will be the root of the tree(First element)
+
+3. **Heap-Sort**
+   After one build-max-heap, largest element is at a[0]. Swap a[0] with last element of current array, so tree index will not be broken and easier to calculate the right index.
+   Do this until all elements are sorted.
