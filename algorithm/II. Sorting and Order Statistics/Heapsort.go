@@ -17,7 +17,11 @@ func randomizeData(data []int){
 
 // Util functions
 func parentIndex(i int) int {
-    return i/2 - 1
+    if i%2 == 0 { // Right node or parent node
+        return (i - 2)/2
+    }
+    // Left node
+    return (i - 1)/2
 }
 
 // Array start from 0, so it's a bit different.
@@ -30,6 +34,10 @@ func rightChildIndex(i int) int {
 }
 
 func printHeap(heap []int, i int, level int) {
+    if i == 0 {
+        fmt.Println("=====Heap")
+    }
+
     if i>= len(heap) { return }
     // Print parent
     prefix := strings.Repeat(" ", 4 * level) + strings.Repeat("-", 4)
@@ -37,12 +45,13 @@ func printHeap(heap []int, i int, level int) {
 
     // Print children if any
     left := leftChildIndex(i)
-    if left < len(heap) {
-        printHeap(heap, left, level+1)
-    }
+    printHeap(heap, left, level+1)
+
     right := rightChildIndex(i)
-    if right < len(heap) {
-        printHeap(heap, right, level+1)
+    printHeap(heap, right, level+1)
+
+    if i == 0 {
+        fmt.Println("=====Heap End")
     }
 }
 
@@ -63,6 +72,7 @@ func maxHeapify(heap []int, root int){
 
 func buildMaxHeap(heap []int) {
     bottomRootIdx := parentIndex(len(heap)-1)
+    fmt.Println("Build max heap from", bottomRootIdx, " Heap size=", len(heap))
     for i:=bottomRootIdx; i>=0; i-- {
         maxHeapify(heap, i)
     }
@@ -70,10 +80,11 @@ func buildMaxHeap(heap []int) {
 
 func heapSort(heap[] int) {
     buildMaxHeap(heap)
-    printHeap(heap, 0, 0)
     for i:=len(heap)-1; i>=1; i-- {
         heap[i], heap[0] = heap[0], heap[i]
         buildMaxHeap(heap[:i])
+        fmt.Println("#",i, " BuildMaxHeap")
+        printHeap(heap[:i], 0, 0)
     }
 }
 
@@ -81,6 +92,7 @@ func main() {
     var x = [10]int {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
     data := x[:]
     randomizeData(data)
+    fmt.Println("Randomized array:", data)
 
     fmt.Println("Original heap=============")
     printHeap(data, 0, 0)
