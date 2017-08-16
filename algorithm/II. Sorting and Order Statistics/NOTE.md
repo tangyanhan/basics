@@ -67,3 +67,15 @@ Heapsort is done with three procedures:
 3. **Heap-Sort**
    After one build-max-heap, largest element is at a[0]. Swap a[0] with last element of current array, so tree index will not be broken and easier to calculate the right index.
    Do this until all elements are sorted.
+
+## PriorityQueue
+
+PriorityQueue is built based on a max-heap or a min-heap. Each time we pick the maximum/minimum element from a priority queue, and remaining of them will keep max-heap/min-heap by maxHeapify/minHeapify(O(lgn))
+
+As we just pick the root element each time, a priority queue must be a max-heap/min-heap, but not necessarily be a sorted array just like heap sort.
+
+### Running time of main proedures
+* **Extract Max** O(lg n)
+* **Get Max** Θ(1)
+* **Increase Key** O(lg n)
+* **Insert** O(lg n)
