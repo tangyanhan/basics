@@ -2,6 +2,7 @@
 
 * [0. Introduction](#intro)
 * [1. Heapsort](#heapsort)
+* [2. Quicksort](#quicksort)
 
 # 0. Introduction <i id="intro"></i>
 
@@ -79,3 +80,47 @@ As we just pick the root element each time, a priority queue must be a max-heap/
 * **Get Max** Θ(1)
 * **Increase Key** O(lg n)
 * **Insert** O(lg n)
+
+# 2. Quicksort <i id="quicksort"></i>
+
+The quicksort algorithm has a worst-case running time of Θ(n<sup>2</sup>) on an input array
+of n numbers. Despite this slow worst-case running time, quicksort is often the best
+practical choice for sorting because it is remarkably efficient on the average: its
+expected running time is Θ(n lg n), and the constant factors hidden in the ‚.n lg n/
+notation are quite small. It also has the advantage of sorting in place,
+and it works well even in virtual-memory environments.
+
+Q: When does quick result to worst running time?
+
+## Partition
+
+Partition is the key operation in quicksort. Select a pivot element, divide the array into two parts: left elements are smaller than pivot, and right elements are larger.
+
+Psudo code:
+
+    def partition(A, p, r):
+        pivot = A[r]
+        i = p-1
+        for j in range(p, r):
+            if A[j] < pivot:
+                i += 1
+                A[i], A[j] = A[j], A[i]
+        A[i+1], A[r] = A[r], A[i+1]
+        return i+1
+
+### Randomized partition
+
+Quicksort result to worst case when partition is completely unbalanced - each time 0 element on one side. So a trick is to make it randomized:
+
+    def randomizedPartition(A, p, r):
+        i = rand(p, r)
+        A[i], A[r] = A[r], A[i]
+        return partition(A, p, r)
+
+## Quicksort
+
+    def quicksort(A, p, r):
+        if p < r:
+            q = partition(A, p, r)
+            quicksort(A, p, q-1)
+            quicksort(A, q+1, r)
