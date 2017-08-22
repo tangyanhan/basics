@@ -3,6 +3,8 @@
 * [0. Introduction](#intro)
 * [1. Heapsort](#heapsort)
 * [2. Quicksort](#quicksort)
+* [3. Mergesort](#mergesort)
+* [4. Sorting in Linear Time](#linearsort)
 
 # 0. Introduction <i id="intro"></i>
 
@@ -30,7 +32,7 @@ Heapsort       |    O(n lg n)            |  -
 Quicksort      |    Θ(n<sup>2</sup>)     |  Θ(n lg n) (expected)
 Counting sort  |    Θ(k + n)             |  Θ(k + n)
 Radix sort     |    Θ(d(n + k))          |  Θ(d(n + k))
-Bucket sort    |    Θ(n<sup>2</sup>      |  Θ(n)   (average case)
+Bucket sort    |    Θ(n<sup>2</sup>)     |  Θ(n)   (average case)
 
 
 # 1. Heapsort <i id="heapsort"></i>
@@ -124,3 +126,29 @@ Quicksort result to worst case when partition is completely unbalanced - each ti
             q = partition(A, p, r)
             quicksort(A, p, q-1)
             quicksort(A, q+1, r)
+
+# 3. Mergesort <i id="mergesort"></i>
+
+Mergesort is mainly about divide-and-conquer. Break the array until it only contains 1-3 elements so it's easy to compare, and then bring smaller sorted array up and merge them.
+Mergesort takes expected time of Θ(nlgn), and memory of O(n)
+
+# 4. Sorting in Linear Time <i id="linearsort"></i>
+
+Theorem 8.1:
+Any comparison sort algorithm requires Ω(n lgn) comparisons in the worst case.
+
+## Counting sort
+
+Suppose all elements are within range [0, k], and we have k=O(n), the sorting time is Θ(n), or Θ(k+n) in detail. It uses O(n) space.
+
+## Radix sort
+
+Radix sort can be seen as a variation of counting sort - while counting sort uses O(n+k) space, it uses O(n+x) space, x stands for the radix of k.
+Time of radix sort: Θ(d(n+k))
+
+## Bucket sort
+
+Assume that the input is drawn ifrom a uniform distribution, and has an average-case of running time of O(n).
+
+
+
