@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circle progress bar</title>
+</head>
+<body>
+
+<canvas id="canvas"  width="400" height="400" style="background-color:#333"></canvas>
+
+<script src="./circle_progress_bar.js"></script>
+<script>
+    canvas = document.getElementById("canvas");
+    bar = CircleProgressBar.New(canvas, "grey", "green", 10, 0.6);
+</script>
+
+</body>
+</html>
