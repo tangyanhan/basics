@@ -6,12 +6,14 @@
 </head>
 <body>
 
+<button onclick="bar.drawAnimated()">Animate</button>
+
 <canvas id="canvas"  width="400" height="400" style="background-color:#333"></canvas>
 
 <script src="./circle_progress_bar.js"></script>
 <script>
     canvas = document.getElementById("canvas");
-    bar = CircleProgressBar.New(canvas, "grey", "green", 10, 0.6);
+    bar = CircleProgressBar.New(canvas, "white" ,"grey", "green", 10, 0.6);
 </script>
 
 </body>
