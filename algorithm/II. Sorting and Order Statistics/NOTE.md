@@ -148,7 +148,7 @@ Time of radix sort: Θ(d(n+k))
 
 ## Bucket sort
 
-Assume that the input is drawn ifrom a uniform distribution, and has an average-case of running time of O(n).
+Assume that the input is drawn from a uniform distribution, and has an average-case of running time of O(n).
 
 
 
