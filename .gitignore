@@ -1,6 +1,8 @@
 # IDE files
 .idea
 
+node_modules/
+
 *.exe
 # c middle files
 *.o
